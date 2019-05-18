@@ -9,11 +9,13 @@ namespace Eicon
         static void Main(string[] args)
         {
             if (args.Length == 0) {
-                throw new ArgumentException("Please pass in the path to a file for the args.");
+                System.Console.WriteLine($"Please pass a command-line argument pointing to the ROM to load.");
+                return;
             }
 
             if (!File.Exists(args[0])) {
-                throw new FileNotFoundException($"[{args[0]}] was not found.");
+                System.Console.WriteLine($"The given file does not exist: [{args[0]}].");
+                return;
             }
 
             var emulator = new Emulator();
